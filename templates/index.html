@@ -5,7 +5,6 @@
   <title>FBISE SSC-II Gazette Lookup</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    /* Reset and basic styling */
     body {
       margin: 0;
       padding: 0;
@@ -27,6 +26,7 @@
       width: 100%;
       text-align: center;
       animation: fadeIn 0.8s ease-in-out;
+      position: relative;
     }
 
     h1 {
@@ -47,7 +47,7 @@
       border: 1px solid #ccc;
       border-radius: 8px;
       outline: none;
-      transition: border 0.3s;
+      transition: border 0.3s, box-shadow 0.3s;
     }
 
     input[type=text]:focus {
@@ -77,6 +77,32 @@
       margin-top: 1rem;
     }
 
+    .footer {
+      font-size: 0.8rem;
+      color: #555;
+      margin-top: 1rem;
+    }
+
+    .dark-mode {
+      background: #121212;
+      color: #fff;
+    }
+    .dark-mode .container {
+      background: #1e1e1e;
+      color: #fff;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #555;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -85,12 +111,19 @@
 </head>
 <body>
   <div class="container">
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌙</button>
     <h1>Roll Number Lookup (SSC-II 2025)</h1>
     <form method="get" action="/result">
       <input type="text" id="roll" name="roll" required pattern="\d{7}" placeholder="Enter 7-digit Roll No">
       <button type="submit">Search Result</button>
     </form>
     <div class="hint">Powered by official FBISE Gazette 2025.</div>
+    <div class="footer">Developed by <strong>Mr Wasi</strong> - All Rights Reserved</div>
   </div>
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
 </body>
 </html>
