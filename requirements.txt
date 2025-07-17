@@ -1,0 +1,5 @@
+pdfplumber==0.11.3
+pandas==2.2.2
+flask==3.0.3
+gunicorn==22.0.0
+pyarrow==17.0.0   # parquet support
