@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Result for {{ row.RollNo }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; max-width:480px; margin:2rem auto; padding:0 1rem; }
+    h1 { font-size:1.4rem; }
+    table { width:100%; border-collapse:collapse; margin-top:1rem; }
+    th { text-align:left; padding:.4rem .2rem; }
+    td { padding:.4rem .2rem; border-bottom:1px solid #ddd; }
+    .ok { color:green; font-weight:bold; }
+    .warn { color:#d35400; font-weight:bold; }
+    .err { color:red; font-weight:bold; }
+    a { text-decoration:none; color:#0077cc; }
+  </style>
+</head>
+<body>
+  <h1>Result</h1>
+  {% if row %}
+  <table>
+    <tr><th>Roll No</th><td>{{ row.RollNo }}</td></tr>
+    <tr><th>Name</th><td>{{ row.Name }}</td></tr>
+    <tr><th>Status</th>
+        <td class="{% if row.Status == 'PASS' %}ok{% elif row.Status.startswith('COMPT') %}warn{% else %}err{% endif %}">
+          {{ row.Status }}
+        </td>
+    </tr>
+    <tr><th>Marks</th><td>{{ row.Marks if row.Marks is not none else '—' }}</td></tr>
+    <tr><th>Grade</th><td>{{ row.Grade if row.Grade else '—' }}</td></tr>
+    <tr><th>School</th><td>{{ row.SchoolName }}</td></tr>
+  </table>
+  {% else %}
+    <p>No record found.</p>
+  {% endif %}
+  <p><a href="/">Search again</a></p>
+</body>
+</html>
