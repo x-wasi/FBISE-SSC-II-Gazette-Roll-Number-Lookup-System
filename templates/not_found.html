@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,14 +6,104 @@
   <title>No Result Found</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: Arial, sans-serif; max-width:480px; margin:2rem auto; padding:0 1rem; }
-    h1 { font-size:1.4rem; color:#c00; }
-    a { text-decoration:none; color:#0077cc; }
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      background: #121212;
+      color: #fff;
+    }
+    .card {
+      background: #fff;
+      width: 100%;
+      max-width: 450px;
+      padding: 2rem;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      animation: fadeIn 0.8s ease-in-out;
+      position: relative;
+    }
+    .dark-mode .card {
+      background: #1e1e1e;
+      color: #fff;
+    }
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: #c00;
+    }
+    .dark-mode h1 {
+      color: #ff6b6b;
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    a {
+      display: inline-block;
+      padding: 10px 15px;
+      background: #4facfe;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+    }
+    a:hover {
+      background: #00c6fb;
+      transform: scale(1.05);
+    }
+    .toggle-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #666;
+    }
+    .dark-mode .toggle-btn {
+      color: #fff;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      color: #555;
+    }
+    .dark-mode .footer {
+      color: #bbb;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
-  <h1>No Result Found</h1>
-  <p>No student record matched roll number <strong>{{ roll }}</strong>.</p>
-  <p><a href="/">Try again</a></p>
+  <div class="card">
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌙</button>
+    <h1>No Result Found</h1>
+    <p>No student record matched roll number <strong>{{ roll }}</strong>.</p>
+    <a href="/">🔍 Try Again</a>
+    <div class="footer">Developed by <strong>Mr Wasi</strong> - All Rights Reserved</div>
+  </div>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
 </body>
 </html>
